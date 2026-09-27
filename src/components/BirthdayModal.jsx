@@ -156,8 +156,18 @@ export default function BirthdayModal() {
                     >
                         {/* Close */}
                         <button
-                            onClick={() => setLetterOpen(false)}
-                            className="absolute top-4 right-5 text-[#C9A96E]/60 hover:text-[#C9A96E] transition-colors text-lg"
+                            onClick={() => { setLetterOpen(false); handleClose(); }}
+                            className="absolute top-4 right-5 flex items-center justify-center transition-all hover:scale-110"
+                            style={{
+                                width: '36px',
+                                height: '36px',
+                                borderRadius: '50%',
+                                border: '1.5px solid #C9A96E',
+                                background: 'rgba(201,169,110,0.1)',
+                                color: '#C9A96E',
+                                fontSize: '16px',
+                                cursor: 'pointer',
+                            }}
                         >
                             ✕
                         </button>
