@@ -22,9 +22,7 @@ export const personalImages = [
 
 // Videos
 export const videos = [
-    'IMG_1837.MOV',
-    'IMG_2019.MOV',
-    'IMG_2031.MOV',
+    'video.mov',
 ];
 
 // Helper to import image dynamically

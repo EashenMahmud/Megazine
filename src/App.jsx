@@ -48,13 +48,7 @@ export default function App() {
       />
 
       {/* ===== VIDEO FEATURE 1 ===== */}
-      {videos[1] && (
-        <VideoFeature
-          video={videos[1]}
-          title="In Motion"
-          subtitle="The most beautiful moments, alive."
-        />
-      )}
+
 
       {/* ===== PHOTO STORY 2 ===== */}
       <PhotoStory
@@ -78,14 +72,7 @@ export default function App() {
         reverse={false}
       />
 
-      {/* ===== VIDEO FEATURE 2 ===== */}
-      {videos[2] && (
-        <VideoFeature
-          video={videos[2]}
-          title="Unscripted"
-          subtitle="Candid. Real. Breathtaking."
-        />
-      )}
+
 
       {/* ===== PHOTO STORY 3 ===== */}
       {/* <PhotoStory
@@ -126,14 +113,14 @@ export default function App() {
         <PersonalCarousel images={personalImages} />
       )}
 
-      {/* ===== VIDEO FEATURE 3 ===== */}
-      {/* {videos[0] && (
+      {/* ===== VIDEO FEATURE 2 ===== */}
+      {videos[0] && (
         <VideoFeature
           video={videos[0]}
-          title="A Memory"
-          subtitle="Preserved in light and time."
+          title="Unscripted"
+          subtitle="Candid. Real. Breathtaking."
         />
-      )} */}
+      )}
 
       {/* ===== FINAL SPREAD ===== */}
       <SectionDivider

@@ -35,51 +35,17 @@ export default function VideoFeature({ video, title, subtitle }) {
     return (
         <section
             ref={sectionRef}
-            className="relative overflow-hidden flex items-end"
-            style={{ height: '100vh', minHeight: '600px' }}
+            style={{ background: '#0A0907', minHeight: '60vh' }}
+            className="flex flex-col md:flex-row items-center"
         >
-            {/* Video background */}
-            <video
-                ref={videoRef}
-                src={getVideoUrl(video)}
-                muted={muted}
-                loop
-                playsInline
-                preload="metadata"
-                className="absolute inset-0 w-full h-full object-cover"
-            />
-
-            {/* Overlays: rich gradient from left + bottom */}
+            {/* ── Left: Text Panel ── */}
             <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                    background: 'linear-gradient(to right, rgba(10,9,7,0.78) 0%, rgba(10,9,7,0.3) 55%, transparent 100%)',
-                }}
-            />
-            <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                    background: 'linear-gradient(to top, rgba(10,9,7,0.6) 0%, transparent 45%)',
-                }}
-            />
-
-            {/* Film grain texture */}
-            <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                    opacity: 0.04,
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-                    backgroundSize: '200px',
-                }}
-            />
-
-            {/* Content — lower-left anchored */}
-            <div
-                className="relative z-10 px-10 md:px-20 pb-16 md:pb-24 w-full max-w-3xl"
+                className="flex-1 flex flex-col justify-center px-10 md:px-20 py-16 md:py-24"
                 style={{
                     opacity: revealed ? 1 : 0,
                     transform: revealed ? 'translateY(0)' : 'translateY(30px)',
                     transition: 'opacity 1s ease 0.2s, transform 1s ease 0.2s',
+                    minWidth: 0,
                 }}
             >
                 {/* Label */}
@@ -91,7 +57,7 @@ export default function VideoFeature({ video, title, subtitle }) {
                 <h2
                     style={{
                         fontFamily: "'Playfair Display', serif",
-                        fontSize: 'clamp(2.8rem, 8vw, 7.5rem)',
+                        fontSize: 'clamp(2.8rem, 6vw, 6rem)',
                         fontWeight: 400,
                         fontStyle: 'italic',
                         lineHeight: 1,
@@ -117,7 +83,7 @@ export default function VideoFeature({ video, title, subtitle }) {
                     {subtitle}
                 </p>
 
-                {/* Mute toggle — minimal borderless design */}
+                {/* Mute toggle */}
                 <button
                     onClick={toggleMute}
                     className="flex items-center gap-4 group"
@@ -143,22 +109,17 @@ export default function VideoFeature({ video, title, subtitle }) {
                 </button>
             </div>
 
-            {/* Issue badge — top right */}
-            <div
-                className="absolute top-10 right-10 flex flex-col items-center gap-2"
-                style={{
-                    opacity: revealed ? 1 : 0,
-                    transition: 'opacity 1s ease 0.5s',
-                }}
-            >
-                <div className="w-px bg-[#C9A96E]/30" style={{ height: '48px' }} />
-                <span
-                    className="font-[Montserrat] text-[7px] tracking-[0.45em] text-[#C9A96E]/50 uppercase"
-                    style={{ writingMode: 'vertical-rl' }}
-                >
-                    MOTION PICTURE
-                </span>
-                <div className="w-px bg-[#C9A96E]/30" style={{ height: '48px' }} />
+            {/* ── Right: Video ── */}
+            <div className="flex-1 flex items-center justify-center w-full" style={{ minWidth: 0 }}>
+                <video
+                    ref={videoRef}
+                    src={getVideoUrl(video)}
+                    muted={muted}
+                    loop
+                    playsInline
+                    preload="metadata"
+                    style={{ display: 'block', width: '100%', maxHeight: '90vh', objectFit: 'contain' }}
+                />
             </div>
         </section>
     );
