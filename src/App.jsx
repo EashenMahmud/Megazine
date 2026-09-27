@@ -64,9 +64,9 @@ export default function App() {
 
       {/* ===== EDITORIAL SPREAD 3 ===== */}
       <SectionDivider
-        label="Issue 01 · The Portrait"
-        title="Luminous"
-        subtitle="Timeless portraits of the woman who changed my entire life"
+        label="Issue 01 · The Muse"
+        title="Breathtaking"
+        subtitle="There are no words beautiful enough to describe you, so I let these frames speak for me"
       />
 
       <EditorialSpread
