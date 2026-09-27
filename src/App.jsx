@@ -125,13 +125,13 @@ export default function App() {
       )}
 
       {/* ===== VIDEO FEATURE 3 ===== */}
-      {videos[0] && (
+      {/* {videos[0] && (
         <VideoFeature
           video={videos[0]}
           title="A Memory"
           subtitle="Preserved in light and time."
         />
-      )}
+      )} */}
 
       {/* ===== FINAL SPREAD ===== */}
       <SectionDivider

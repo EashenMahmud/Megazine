@@ -9,7 +9,7 @@ export default function PersonalCarousel({ images }) {
         if (!images || images.length === 0) return;
 
         const timer = setInterval(() => {
-            setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+            setCurrentIndex((prev) => (prev + 1) % images.length);
         }, 3500);
 
         return () => clearInterval(timer);
@@ -17,15 +17,10 @@ export default function PersonalCarousel({ images }) {
 
     if (!images || images.length === 0) return null;
 
-    // Helper to get wrap-around indices safely
-    const getIndex = (offset) => {
-        return (currentIndex + offset + images.length) % images.length;
-    };
-
     return (
         <section className="py-24 overflow-hidden relative" style={{ background: '#E9E2D6' }}>
             {/* Title / Header */}
-            <div className="text-center mb-16">
+            <div className="text-center mb-32">
                 <p className="font-[Montserrat] text-[8px] tracking-[0.5em] text-[#C9A96E] mb-5 uppercase">
                     ◆ &nbsp; Personal Archives
                 </p>
@@ -45,52 +40,86 @@ export default function PersonalCarousel({ images }) {
             </div>
 
             {/* Carousel Container */}
-            <div className="flex items-center justify-center gap-4 md:gap-8 max-w-[1400px] mx-auto px-4 h-[60vh] md:h-[75vh]">
+            <div
+                className="relative w-full max-w-[1400px] mx-auto flex items-center justify-center overflow-visible mt-20"
+                style={{ height: '70vh' }}
+            >
+                {images.map((img, idx) => {
+                    let diff = (idx - currentIndex + images.length) % images.length;
+                    if (diff > Math.floor(images.length / 2)) {
+                        diff -= images.length;
+                    }
 
-                {/* Left Image (Previous) */}
-                <div
-                    className="flex-1 h-[75%] transition-all duration-700 ease-in-out opacity-60 overflow-hidden cursor-pointer hover:opacity-80"
-                    onClick={() => setCurrentIndex(getIndex(-1))}
-                >
-                    <img
-                        src={getImageUrl(images[getIndex(-1)])}
-                        alt=""
-                        className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                    />
-                </div>
+                    // CSS transition styles for buttery smooth 3D carousel effect
+                    let styleClasses = "absolute transition-all duration-[1200ms] ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer ";
 
-                {/* Center Image (Current) */}
-                <div className="flex-[1.1] md:flex-[1.3] h-full transition-all duration-700 ease-in-out shadow-[0_30px_60px_rgba(0,0,0,0.25)] z-10 overflow-hidden">
-                    <img
-                        src={getImageUrl(images[currentIndex])}
-                        alt=""
-                        className="w-full h-full object-cover"
-                    />
-                </div>
+                    let inlineStyles = {
+                        width: 'clamp(280px, 30vw, 400px)',
+                        height: '100%',
+                        transform: 'translateX(300%) scale(0.5)',
+                        opacity: 0,
+                        zIndex: 0,
+                        pointerEvents: 'none',
+                    };
 
-                {/* Right Image (Next) */}
-                <div
-                    className="flex-1 h-[75%] transition-all duration-700 ease-in-out opacity-60 overflow-hidden cursor-pointer hover:opacity-80"
-                    onClick={() => setCurrentIndex(getIndex(1))}
-                >
-                    <img
-                        src={getImageUrl(images[getIndex(1)])}
-                        alt=""
-                        className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                    />
-                </div>
+                    if (diff === 0) {
+                        inlineStyles.transform = 'translateX(0%) scale(1)'; // Center image scaled to box exactly
+                        inlineStyles.opacity = 1;
+                        inlineStyles.zIndex = 30;
+                        inlineStyles.pointerEvents = 'auto';
+                    } else if (diff === -1) {
+                        inlineStyles.transform = 'translateX(-120%) scale(0.70)'; // Smaller sides
+                        inlineStyles.opacity = 0.65;
+                        inlineStyles.zIndex = 20;
+                        inlineStyles.pointerEvents = 'auto';
+                    } else if (diff === 1) {
+                        inlineStyles.transform = 'translateX(120%) scale(0.70)';
+                        inlineStyles.opacity = 0.65;
+                        inlineStyles.zIndex = 20;
+                        inlineStyles.pointerEvents = 'auto';
+                    } else if (diff === -2) {
+                        inlineStyles.transform = 'translateX(-220%) scale(0.5)';
+                        inlineStyles.opacity = 0;
+                        inlineStyles.zIndex = 10;
+                    } else if (diff === 2) {
+                        inlineStyles.transform = 'translateX(220%) scale(0.5)';
+                        inlineStyles.opacity = 0;
+                        inlineStyles.zIndex = 10;
+                    } else if (diff < 0) {
+                        inlineStyles.transform = 'translateX(-300%) scale(0.5)';
+                    }
 
+                    return (
+                        <div
+                            key={idx}
+                            className={styleClasses}
+                            style={inlineStyles}
+                            onClick={() => {
+                                if (diff !== 0) setCurrentIndex(idx);
+                            }}
+                        >
+                            <img
+                                src={getImageUrl(img)}
+                                alt=""
+                                className="w-full h-full object-cover shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
+                                style={{
+                                    boxShadow: diff === 0 ? '0 30px 60px rgba(0,0,0,0.45)' : '0 15px 35px rgba(0,0,0,0.2)'
+                                }}
+                            />
+                        </div>
+                    );
+                })}
             </div>
 
             {/* Simple dot indicators */}
-            <div className="flex justify-center gap-3 mt-12">
+            <div className="flex justify-center gap-3 mt-20">
                 {images.map((img, idx) => (
                     <button
                         key={idx}
                         onClick={() => setCurrentIndex(idx)}
                         className={`transition-all duration-500 rounded-full ${currentIndex === idx
-                                ? 'w-8 h-1.5 bg-[#C9A96E]'
-                                : 'w-1.5 h-1.5 bg-[#C9A96E]/30 hover:bg-[#C9A96E]/70'
+                            ? 'w-8 h-1.5 bg-[#C9A96E]'
+                            : 'w-1.5 h-1.5 bg-[#C9A96E]/30 hover:bg-[#C9A96E]/70'
                             }`}
                         aria-label={`Go to slide ${idx + 1}`}
                     />
