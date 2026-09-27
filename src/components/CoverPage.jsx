@@ -41,7 +41,7 @@ export default function CoverPage({ image }) {
                     className="font-[Montserrat] text-[10px] tracking-[0.35em] text-[#C9A96E] mb-4 animate-fade-in"
                     style={{ animationDelay: '0.2s', animationFillMode: 'both', opacity: 0 }}
                 >
-                    ✦ &nbsp; LOVE EDITION &nbsp; ✦ &nbsp; VOLUME I
+                    ✦ &nbsp; LOVE EDITION &nbsp; ✦ &nbsp;
                 </p>
 
                 {/* Main title */}

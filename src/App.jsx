@@ -72,7 +72,7 @@ export default function App() {
       <EditorialSpread
         images={[rslImages[21], rslImages[22]]}
         quote="Beauty is the illumination of your soul."
-        author="Sumiya · 2024"
+        author="Sumiya · 2026"
         reverse={false}
       />
 

@@ -121,10 +121,7 @@ export default function EditorialSpread({ images, quote, author, reverse = false
                 {/* Thin rule */}
                 <div className="es-reveal h-px bg-[#C9A96E]/30 w-full" />
 
-                {/* Folio number */}
-                <p className="es-reveal mt-5 font-[Montserrat] text-[8px] tracking-[0.4em] text-[#C9A96E]/50 uppercase">
-                    Vol. I &nbsp;·&nbsp; 2024
-                </p>
+
             </div>
 
             <style>{`
