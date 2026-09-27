@@ -118,16 +118,16 @@ export default function App() {
         <VideoFeature
           video={videos[0]}
           title="Unscripted"
-          subtitle="Candid. Real. Breathtaking."
+          subtitle="Candid. Real."
         />
       )}
 
       {/* ===== FINAL SPREAD ===== */}
-      <SectionDivider
+      {/* <SectionDivider
         label="Fin"
         title="Always"
         subtitle="Made with love · For Sumiya"
-      />
+      /> */}
 
       {/* ===== COLOPHON / CLOSING ===== */}
       <div
