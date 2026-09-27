@@ -4,6 +4,7 @@ import VideoFeature from './components/VideoFeature';
 import MagazineGrid from './components/MagazineGrid';
 import PhotoStory from './components/PhotoStory';
 import SectionDivider from './components/SectionDivider';
+import PersonalCarousel from './components/PersonalCarousel';
 import { rslImages, personalImages, videos } from './assets';
 
 // Combine all images (RSL professional first for editorial sections)
@@ -92,8 +93,10 @@ export default function App() {
         imagePosition="object-[center_25%]"
       /> */}
 
+
+
       {/* ===== MOMENTS GRID (Infinite Scroll) ===== */}
-      <MagazineGrid images={allImages}
+      <MagazineGrid images={rslImages}
         imagePositions={{
           'RSL03349.jpg': 'object-[center_25%]',
           'RSL03152.jpg': 'object-[center_25%]',
@@ -116,6 +119,10 @@ export default function App() {
           'RSL07499.png': '120vh',
         }}
       />
+      {/* ===== PERSONAL CAROUSEL ===== */}
+      {personalImages && personalImages.length > 0 && (
+        <PersonalCarousel images={personalImages} />
+      )}
 
       {/* ===== VIDEO FEATURE 3 ===== */}
       {videos[0] && (
