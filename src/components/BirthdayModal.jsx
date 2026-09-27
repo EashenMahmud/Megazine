@@ -105,6 +105,7 @@ export default function BirthdayModal() {
                         onClick={() => setLetterOpen(true)}
                         className="flex flex-col items-center gap-3 group"
                         aria-label="Open birthday letter"
+                        style={{ cursor: 'pointer', background: 'none', border: 'none' }}
                     >
                         <div style={{ fontSize: '4rem', animation: 'bmLetterBounce 1.2s ease-in-out infinite' }}>
                             💌
@@ -140,10 +141,9 @@ export default function BirthdayModal() {
                 >
                     <div
                         style={{
-                            background: '#fdfaf4',
-                            backgroundImage: `
-                                repeating-linear-gradient(transparent, transparent 31px, #e8d9c5 31px, #e8d9c5 32px)
-                            `,
+                            background: '#f7f0e6',
+                            backgroundImage: `radial-gradient(ellipse at 20% 10%, rgba(255,248,230,0.9) 0%, transparent 60%),
+                                             radial-gradient(ellipse at 80% 90%, rgba(220,195,160,0.4) 0%, transparent 60%)`,
                             maxWidth: '640px',
                             width: '92vw',
                             maxHeight: '85vh',
@@ -188,7 +188,7 @@ export default function BirthdayModal() {
 
                         {/* Body */}
                         {[
-                            `Every single day, I find myself thinking about you constantly — hoping that if I keep you in my thoughts all day long, you might visit me in my dreams at night. I miss you more than words can say.`,
+                            `Every single day, I find myself thinking about you constantly hoping that if I keep you in my thoughts all day long, you might visit me in my dreams at night. I miss you more than words can say.`,
                             `Falling in love with you was the easiest thing I have ever done. In a world full of noise, nothing truly matters to me but you, and every day that I am alive, I am reminded of this truth.`,
                             `I loved you the day I first met you, I love you today, and I promise to love you for the rest of my life.`,
                         ].map((para, i) => (
