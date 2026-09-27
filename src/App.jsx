@@ -58,6 +58,7 @@ export default function App() {
         image={rslImages[16]}
         caption="The grace she carries — effortless, timeless, sublime."
         issue="Vol. I · Feature"
+        imagePosition="object-[center_35%]"
       />
 
       {/* ===== EDITORIAL SPREAD 3 ===== */}
@@ -84,11 +85,12 @@ export default function App() {
       )}
 
       {/* ===== PHOTO STORY 3 ===== */}
-      <PhotoStory
+      {/* <PhotoStory
         image={rslImages[27]}
         caption="Not all art hangs in galleries — some walks beside you every day."
         issue="Vol. I · Gallery"
-      />
+        imagePosition="object-[center_25%]"
+      /> */}
 
       {/* ===== MOMENTS GRID (Infinite Scroll) ===== */}
       <MagazineGrid images={allImages} />
