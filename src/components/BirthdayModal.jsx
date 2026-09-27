@@ -1,7 +1,45 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 
 const STORAGE_KEY = 'sumiya_birthday_visited';
 const AUTO_CLOSE_SEC = 10;
+
+const CONFETTI_COLORS = ['#C9A96E', '#f5a7c7', '#a8d8ea', '#f9e04b', '#b5ead7', '#ff9aa2', '#ffdac1', '#e2f0cb'];
+const CONFETTI_COUNT = 70;
+
+function Confetti() {
+    const pieces = useMemo(() => Array.from({ length: CONFETTI_COUNT }, (_, i) => ({
+        id: i,
+        left: `${Math.random() * 100}%`,
+        color: CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)],
+        size: `${6 + Math.random() * 8}px`,
+        delay: `${Math.random() * 1.5}s`,
+        duration: `${2.5 + Math.random() * 2}s`,
+        rotation: `${Math.random() * 360}deg`,
+        shape: Math.random() > 0.5 ? 'rect' : 'circle',
+    })), []);
+
+    return (
+        <div className="fixed inset-0 pointer-events-none z-[10000] overflow-hidden">
+            {pieces.map(p => (
+                <div
+                    key={p.id}
+                    style={{
+                        position: 'absolute',
+                        top: '-20px',
+                        left: p.left,
+                        width: p.size,
+                        height: p.size,
+                        background: p.color,
+                        borderRadius: p.shape === 'circle' ? '50%' : '2px',
+                        transform: `rotate(${p.rotation})`,
+                        animation: `confettiFall ${p.duration} ${p.delay} ease-in forwards`,
+                        opacity: 0,
+                    }}
+                />
+            ))}
+        </div>
+    );
+}
 
 export default function BirthdayModal() {
     const [visible, setVisible] = useState(true);
@@ -13,6 +51,7 @@ export default function BirthdayModal() {
 
     return (
         <>
+            <Confetti />
             {/* ── Backdrop ── */}
             <div
                 className="fixed inset-0 z-[9999] flex items-center justify-center"
@@ -255,6 +294,12 @@ export default function BirthdayModal() {
                 @keyframes bmLetterOpen {
                     from { opacity: 0; transform: scale(0.88) translateY(30px); }
                     to   { opacity: 1; transform: scale(1)    translateY(0);    }
+                }
+                @keyframes confettiFall {
+                    0%   { opacity: 1; transform: translateY(0)     rotate(0deg)   scaleX(1); }
+                    25%  { opacity: 1; transform: translateY(25vh)  rotate(180deg) scaleX(-1); }
+                    75%  { opacity: 0.8; transform: translateY(75vh) rotate(360deg) scaleX(1); }
+                    100% { opacity: 0; transform: translateY(110vh) rotate(540deg) scaleX(-1); }
                 }
             `}</style>
         </>
