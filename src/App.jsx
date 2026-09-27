@@ -25,7 +25,7 @@ export default function App() {
 
       <EditorialSpread
         images={[rslImages[1], rslImages[2]]}
-        quote="You are the only person who has ever made the world feel both bigger and smaller at the same time — bigger because of the life we are building, smaller because wherever you are, that is home."
+        quote="I have never loved anyone the way I love you. You are my best friend, my peace, my favourite person in the world — and I am so proud to call you my wife."
         author="Your Husband, Always"
         reverse={false}
       />
@@ -33,14 +33,14 @@ export default function App() {
       {/* ===== PHOTO STORY 1 ===== */}
       <PhotoStory
         image={rslImages[5]}
-        caption="She moves through the world like light through stained glass — painting everything she touches with colour and warmth."
+        caption="Every time I see your smile, I forget everything that is hard. That is the power you hold over me."
         issue="Vol. I · Portrait Series"
       />
 
       {/* ===== EDITORIAL SPREAD 2 ===== */}
       <EditorialSpread
         images={[rslImages[7], rslImages[8], rslImages[9]]}
-        quote="There are five thousand kilometres between Dhaka and Zürich — yet every morning I wake up and you are the very first thought that crosses my mind. Distance is just a number. You are the constant."
+        quote="There are five thousand kilometres between Dhaka and Bern — yet every morning I wake up and you are the very first thought that crosses my mind. Distance is just a number. You are the constant."
         author="From Dhaka, With All My Love"
         reverse={true}
       />
