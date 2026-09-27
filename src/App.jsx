@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import CoverPage from './components/CoverPage';
 import EditorialSpread from './components/EditorialSpread';
 import VideoFeature from './components/VideoFeature';
@@ -6,12 +7,15 @@ import PhotoStory from './components/PhotoStory';
 import SectionDivider from './components/SectionDivider';
 import PersonalCarousel from './components/PersonalCarousel';
 import BirthdayModal from './components/BirthdayModal';
+import BirthdayLetterOverlay from './components/BirthdayLetterOverlay';
 import { rslImages, personalImages, videos } from './assets';
 
 // Combine all images (RSL professional first for editorial sections)
 const allImages = [...rslImages, ...personalImages];
 
 export default function App() {
+  const [footerLetterOpen, setFooterLetterOpen] = useState(false);
+
   return (
     <div className="min-h-screen" style={{ background: '#EDE8E0' }}>
       <BirthdayModal />
@@ -180,7 +184,7 @@ export default function App() {
               marginBottom: '1rem',
             }}
           >
-            Sumiya &nbsp;·&nbsp; Love Edition &nbsp;·&nbsp; Vol. I
+            Sumiya &nbsp;·&nbsp; Love Edition &nbsp;·&nbsp;
           </p>
           <p
             style={{
@@ -188,12 +192,51 @@ export default function App() {
               fontSize: '8px',
               letterSpacing: '0.2em',
               color: 'rgba(255,255,255,0.18)',
+              marginTop: '4rem',
             }}
           >
             Made with ♥ just for you
           </p>
+
+          {/* Animated letter icon in footer */}
+          <div className="flex justify-center w-full mt-16">
+            <button
+              onClick={() => setFooterLetterOpen(true)}
+              className="flex flex-col items-center gap-3 group"
+              aria-label="Open birthday letter"
+              style={{ cursor: 'pointer', background: 'none', border: 'none' }}
+            >
+              <div style={{ fontSize: '3rem', animation: 'bmLetterBounceGlobal 1.5s ease-in-out infinite' }}>
+                💌
+              </div>
+              <span style={{
+                fontFamily: "'Montserrat', sans-serif",
+                fontSize: '10px',
+                letterSpacing: '0.3em',
+                color: '#C9A96E',
+                textTransform: 'uppercase',
+                borderBottom: '1px solid rgba(201,169,110,0.4)',
+                paddingBottom: '3px',
+              }}>
+                Open your letter
+              </span>
+            </button>
+          </div>
         </div>
       </div>
+
+      {/* FOOTER LETTER OVERLAY */}
+      {footerLetterOpen && (
+        <BirthdayLetterOverlay onClose={() => setFooterLetterOpen(false)} />
+      )}
+
+      {/* GLOBAL ANIMATIONS */}
+      <style>{`
+        @keyframes bmLetterBounceGlobal {
+            0%, 100% { transform: translateY(0) rotate(-5deg) scale(1);    }
+            50%      { transform: translateY(-10px) rotate(5deg) scale(1.1); }
+        }
+      `}</style>
     </div>
   );
 }
