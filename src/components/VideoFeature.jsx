@@ -36,7 +36,7 @@ export default function VideoFeature({ video, title, subtitle }) {
         <section
             ref={sectionRef}
             style={{ background: '#0A0907', minHeight: '60vh' }}
-            className="flex flex-col md:flex-row items-center"
+            className="flex flex-col md:flex-row items-center mt-10"
         >
             {/* ── Left: Text Panel ── */}
             <div

@@ -18,7 +18,7 @@ export default function PersonalCarousel({ images }) {
     if (!images || images.length === 0) return null;
 
     return (
-        <section className="py-24 overflow-hidden relative" style={{ background: '#E9E2D6' }}>
+        <section className="py-24 overflow-hidden relative" style={{ background: '#E9E2D6', marginBottom: '20px' }}>
             {/* Title / Header */}
             <div className="text-center mb-32">
                 <p className="font-[Montserrat] text-[8px] tracking-[0.5em] text-[#C9A96E] mb-5 uppercase">
