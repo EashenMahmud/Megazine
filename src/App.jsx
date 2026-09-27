@@ -5,6 +5,7 @@ import MagazineGrid from './components/MagazineGrid';
 import PhotoStory from './components/PhotoStory';
 import SectionDivider from './components/SectionDivider';
 import PersonalCarousel from './components/PersonalCarousel';
+import BirthdayModal from './components/BirthdayModal';
 import { rslImages, personalImages, videos } from './assets';
 
 // Combine all images (RSL professional first for editorial sections)
@@ -13,6 +14,7 @@ const allImages = [...rslImages, ...personalImages];
 export default function App() {
   return (
     <div className="min-h-screen" style={{ background: '#EDE8E0' }}>
+      <BirthdayModal />
       {/* ===== COVER ===== */}
       <CoverPage image={rslImages[0]} />
 
