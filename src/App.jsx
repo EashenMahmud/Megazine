@@ -25,7 +25,7 @@ export default function App() {
 
       <EditorialSpread
         images={[rslImages[1], rslImages[2]]}
-        quote="I have never loved anyone the way I love you. You are my best friend, my peace, my favourite person in the world — and I am so proud to call you my wife."
+        quote="You are like a blooming rose in the garden of my heart. My world feels completely empty without you, and I will only became a poet just so you would come and listen."
         author="Your Husband, Always"
         reverse={false}
       />
@@ -72,7 +72,7 @@ export default function App() {
       <EditorialSpread
         images={[rslImages[21], rslImages[22]]}
         quote="Every time I look at these photographs, I am reminded: I am the luckiest person alive. Not because of fate or chance — but because you chose me, and I will spend the rest of my life being worthy of that choice."
-        author="Eashen · September 2026"
+        author="Akib · September 2026"
         reverse={false}
       />
 
