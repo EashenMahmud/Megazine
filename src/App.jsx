@@ -93,7 +93,27 @@ export default function App() {
       /> */}
 
       {/* ===== MOMENTS GRID (Infinite Scroll) ===== */}
-      <MagazineGrid images={allImages} />
+      <MagazineGrid images={allImages}
+        imagePositions={{
+          'RSL03349.jpg': 'object-[center_25%]',
+          'RSL03152.jpg': 'object-[center_25%]',
+          'RSL03369.jpg': 'object-[center_18%]',
+          'RSL07002.jpg': 'object-[center_40%]',
+          // 'RSL07012.jpg': 'object-[center_20%]',
+          'RSL07018.jpg': 'object-[center_30%]',
+          'RSL07449.jpg': 'object-[center_30%]',
+
+          // Add any specific file you want adjusted here!
+        }}
+        imageHeights={{
+          'RSL03349.jpg': '100vh',
+          'RSL03369.jpg': '100vh',
+          'RSL03531.jpg': '100vh',
+          'RSL07002.jpg': '100vh',
+          'RSL07018.jpg': '120vh',
+          'RSL07449.jpg': '120vh',
+        }}
+      />
 
       {/* ===== VIDEO FEATURE 3 ===== */}
       {videos[0] && (

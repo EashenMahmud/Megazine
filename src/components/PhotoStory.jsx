@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { getImageUrl } from '../assets';
 
-export default function PhotoStory({ image, caption, issue, imagePosition = '' }) {
+export default function PhotoStory({ image, caption, issue, imagePosition = '', height = '92vh' }) {
     const ref = useRef(null);
 
     useEffect(() => {
@@ -20,7 +20,7 @@ export default function PhotoStory({ image, caption, issue, imagePosition = '' }
     }, []);
 
     return (
-        <section ref={ref} className="relative overflow-hidden bg-[#0A0907]" style={{ height: '92vh' }}>
+        <section ref={ref} className="relative overflow-hidden bg-[#0A0907]" style={{ height }}>
             {/* Full-bleed image with slow zoom */}
             <div className="absolute inset-0 ps-zoom-wrap">
                 <img

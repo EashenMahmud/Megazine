@@ -5,7 +5,7 @@ export const rslImages = [
     'RSL03360.jpg', 'RSL03367.jpg', 'RSL03369.jpg', 'RSL03416.jpg',
     'RSL03432.jpg', 'RSL03448.jpg', 'RSL03456.jpg', 'RSL03520.jpg',
     'RSL03525.jpg', 'RSL03527.jpg', 'RSL03531.jpg', 'RSL03543.jpg',
-    'RSL07002.jpg', 'RSL07007.jpg', 'RSL07011.jpg', 'RSL07012.jpg',
+    'RSL07002.jpg', 'RSL07007.jpg', 'RSL07011.jpg',
     'RSL07018.jpg', 'RSL07218.jpg', 'RSL07225.jpg', 'RSL07236.jpg',
     'RSL07361.jpg', 'RSL07389.jpg', 'RSL07392.jpg', 'RSL07395.jpg',
     'RSL07403.jpg', 'RSL07441.jpg', 'RSL07449.jpg', 'RSL07460.jpg',

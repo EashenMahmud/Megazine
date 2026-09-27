@@ -6,15 +6,15 @@ import GalleryLightbox from './GalleryLightbox';
 // Each layout takes (images, onClick) and returns JSX
 const LAYOUTS = [
     // Layout A: Dramatic — large left portrait, two smaller portraits offset right
-    (images, onClick) => (
+    (images, onClick, imagePositions = {}, imageHeights = {}) => (
         <div className="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-3" style={{ minHeight: '88vh' }}>
             {/* Primary — tall */}
             <div
                 className="md:col-span-7 mg-img-wrap cursor-pointer"
                 onClick={() => onClick(0)}
-                style={{ minHeight: '80vh' }}
+                style={{ minHeight: '80vh', ...(imageHeights[images[0]] ? { height: imageHeights[images[0]], minHeight: imageHeights[images[0]] } : {}) }}
             >
-                {images[0] && <img src={getImageUrl(images[0])} alt="" className="mg-img" />}
+                {images[0] && <img src={getImageUrl(images[0])} alt="" className={`mg-img ${imagePositions[images[0]] || ''}`.trim()} />}
                 <div className="mg-overlay" />
             </div>
             {/* Secondary pair — offset vertically */}
@@ -24,9 +24,9 @@ const LAYOUTS = [
                         key={i}
                         className={`mg-img-wrap cursor-pointer ${i === 1 ? 'mt-16' : ''}`}
                         onClick={() => onClick(i)}
-                        style={{ aspectRatio: '4/3' }}
+                        style={{ aspectRatio: '4/3', ...(imageHeights[images[i]] ? { height: imageHeights[images[i]], aspectRatio: 'auto' } : {}) }}
                     >
-                        <img src={getImageUrl(images[i])} alt="" className="mg-img" />
+                        <img src={getImageUrl(images[i])} alt="" className={`mg-img ${imagePositions[images[i]] || ''}`.trim()} />
                         <div className="mg-overlay" />
                     </div>
                 ) : null)}
@@ -35,14 +35,14 @@ const LAYOUTS = [
     ),
 
     // Layout B: Curated trio — wide landscape top, two portraits below
-    (images, onClick) => (
+    (images, onClick, imagePositions = {}, imageHeights = {}) => (
         <div className="flex flex-col gap-3">
             <div
                 className="mg-img-wrap cursor-pointer w-full"
                 onClick={() => onClick(0)}
-                style={{ aspectRatio: '21/9' }}
+                style={{ aspectRatio: '21/9', ...(imageHeights[images[0]] ? { height: imageHeights[images[0]], aspectRatio: 'auto' } : {}) }}
             >
-                {images[0] && <img src={getImageUrl(images[0])} alt="" className="mg-img" />}
+                {images[0] && <img src={getImageUrl(images[0])} alt="" className={`mg-img ${imagePositions[images[0]] || ''}`.trim()} />}
                 <div className="mg-overlay" />
             </div>
             <div className="grid grid-cols-2 gap-3">
@@ -51,9 +51,9 @@ const LAYOUTS = [
                         key={i}
                         className="mg-img-wrap cursor-pointer"
                         onClick={() => onClick(i)}
-                        style={{ aspectRatio: '4/5' }}
+                        style={{ aspectRatio: '4/5', ...(imageHeights[images[i]] ? { height: imageHeights[images[i]], aspectRatio: 'auto' } : {}) }}
                     >
-                        <img src={getImageUrl(images[i])} alt="" className="mg-img" />
+                        <img src={getImageUrl(images[i])} alt="" className={`mg-img ${imagePositions[images[i]] || ''}`.trim()} />
                         <div className="mg-overlay" />
                     </div>
                 ) : null)}
@@ -62,19 +62,19 @@ const LAYOUTS = [
     ),
 
     // Layout C: Full-bleed single — editorial statement image
-    (images, onClick) => (
+    (images, onClick, imagePositions = {}, imageHeights = {}) => (
         <div
             className="mg-img-wrap cursor-pointer w-full"
             onClick={() => onClick(0)}
-            style={{ height: '90vh' }}
+            style={{ height: '90vh', ...(imageHeights[images[0]] ? { height: imageHeights[images[0]], minHeight: imageHeights[images[0]] } : {}) }}
         >
-            {images[0] && <img src={getImageUrl(images[0])} alt="" className="mg-img" />}
+            {images[0] && <img src={getImageUrl(images[0])} alt="" className={`mg-img ${imagePositions[images[0]] || ''}`.trim()} />}
             <div className="mg-overlay" />
         </div>
     ),
 
     // Layout D: Inverted — two portraits left, massive portrait right
-    (images, onClick) => (
+    (images, onClick, imagePositions = {}, imageHeights = {}) => (
         <div className="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-3" style={{ minHeight: '88vh' }}>
             <div className="md:col-span-5 flex flex-col gap-3 justify-start" style={{ paddingTop: '3rem' }}>
                 {[0, 1].map((i) => images[i] ? (
@@ -82,9 +82,9 @@ const LAYOUTS = [
                         key={i}
                         className="mg-img-wrap cursor-pointer"
                         onClick={() => onClick(i)}
-                        style={{ aspectRatio: '4/5', flex: 1 }}
+                        style={{ aspectRatio: '4/5', flex: 1, ...(imageHeights[images[i]] ? { height: imageHeights[images[i]], aspectRatio: 'auto', flex: 'none' } : {}) }}
                     >
-                        <img src={getImageUrl(images[i])} alt="" className="mg-img" />
+                        <img src={getImageUrl(images[i])} alt="" className={`mg-img ${imagePositions[images[i]] || ''}`.trim()} />
                         <div className="mg-overlay" />
                     </div>
                 ) : null)}
@@ -92,11 +92,11 @@ const LAYOUTS = [
             <div
                 className="md:col-span-7 mg-img-wrap cursor-pointer"
                 onClick={() => onClick(2)}
-                style={{ minHeight: '80vh' }}
+                style={{ minHeight: '80vh', ...(imageHeights[images[2]] ? { height: imageHeights[images[2]], minHeight: imageHeights[images[2]] } : {}) }}
             >
                 {images[2] && (
                     <>
-                        <img src={getImageUrl(images[2])} alt="" className="mg-img" />
+                        <img src={getImageUrl(images[2])} alt="" className={`mg-img ${imagePositions[images[2]] || ''}`.trim()} />
                         <div className="mg-overlay" />
                     </>
                 )}
@@ -105,15 +105,15 @@ const LAYOUTS = [
     ),
 
     // Layout E: Staggered trio — vertical offset cinematic
-    (images, onClick) => (
+    (images, onClick, imagePositions = {}, imageHeights = {}) => (
         <div className="flex flex-col md:flex-row gap-3 items-stretch">
             {images[0] && (
                 <div
                     className="mg-img-wrap cursor-pointer flex-1"
                     onClick={() => onClick(0)}
-                    style={{ aspectRatio: '3/4', marginTop: '3rem' }}
+                    style={{ aspectRatio: '3/4', marginTop: '3rem', ...(imageHeights[images[0]] ? { height: imageHeights[images[0]], aspectRatio: 'auto' } : {}) }}
                 >
-                    <img src={getImageUrl(images[0])} alt="" className="mg-img" />
+                    <img src={getImageUrl(images[0])} alt="" className={`mg-img ${imagePositions[images[0]] || ''}`.trim()} />
                     <div className="mg-overlay" />
                 </div>
             )}
@@ -121,9 +121,9 @@ const LAYOUTS = [
                 <div
                     className="mg-img-wrap cursor-pointer flex-1"
                     onClick={() => onClick(1)}
-                    style={{ aspectRatio: '3/4', marginBottom: '3rem' }}
+                    style={{ aspectRatio: '3/4', marginBottom: '3rem', ...(imageHeights[images[1]] ? { height: imageHeights[images[1]], aspectRatio: 'auto' } : {}) }}
                 >
-                    <img src={getImageUrl(images[1])} alt="" className="mg-img" />
+                    <img src={getImageUrl(images[1])} alt="" className={`mg-img ${imagePositions[images[1]] || ''}`.trim()} />
                     <div className="mg-overlay" />
                 </div>
             )}
@@ -131,9 +131,9 @@ const LAYOUTS = [
                 <div
                     className="mg-img-wrap cursor-pointer flex-1"
                     onClick={() => onClick(2)}
-                    style={{ aspectRatio: '3/4', marginTop: '5rem' }}
+                    style={{ aspectRatio: '3/4', marginTop: '5rem', ...(imageHeights[images[2]] ? { height: imageHeights[images[2]], aspectRatio: 'auto' } : {}) }}
                 >
-                    <img src={getImageUrl(images[2])} alt="" className="mg-img" />
+                    <img src={getImageUrl(images[2])} alt="" className={`mg-img ${imagePositions[images[2]] || ''}`.trim()} />
                     <div className="mg-overlay" />
                 </div>
             )}
@@ -142,7 +142,7 @@ const LAYOUTS = [
 ];
 
 // ─── Single page unit ─────────────────────────────────────────────────────────
-function MagazinePage({ images, allImages, pageIndex, baseImageIndex }) {
+function MagazinePage({ images, allImages, pageIndex, baseImageIndex, imagePositions, imageHeights }) {
     const ref = useRef(null);
     const [lightboxOpen, setLightboxOpen] = useState(false);
     const [lightboxStart, setLightboxStart] = useState(0);
@@ -168,7 +168,7 @@ function MagazinePage({ images, allImages, pageIndex, baseImageIndex }) {
     return (
         <>
             <div ref={ref} className="mg-page-reveal">
-                {layoutFn(images, handleClick)}
+                {layoutFn(images, handleClick, imagePositions, imageHeights)}
             </div>
             {lightboxOpen && (
                 <GalleryLightbox
@@ -184,7 +184,7 @@ function MagazinePage({ images, allImages, pageIndex, baseImageIndex }) {
 const IMAGES_PER_PAGE = [3, 3, 1, 3, 3];
 
 // ─── Main component ───────────────────────────────────────────────────────────
-export default function MagazineGrid({ images }) {
+export default function MagazineGrid({ images, imagePositions = {}, imageHeights = {} }) {
     const [loadedPages, setLoadedPages] = useState(3);
     const sentinelRef = useRef(null);
 
@@ -262,6 +262,8 @@ export default function MagazineGrid({ images }) {
                                 allImages={images}
                                 pageIndex={page.layoutIdx}
                                 baseImageIndex={page.baseIndex}
+                                imagePositions={imagePositions}
+                                imageHeights={imageHeights}
                             />
                         </div>
 
@@ -269,7 +271,7 @@ export default function MagazineGrid({ images }) {
                         {i % 4 === 3 && (
                             <div
                                 className="text-center mg-page-reveal"
-                                style={{ padding: '4rem 1.5rem', marginBottom: '5rem' }}
+                            // style={{ padding: '4rem 1.5rem', marginBottom: '5rem' }}
                             >
                                 {/* horizontal rule */}
                                 <div className="flex items-center justify-center gap-4 mb-8">
