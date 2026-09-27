@@ -105,7 +105,7 @@ export default function EditorialSpread({ images, quote, author, reverse = false
                 </div>
 
                 {/* Body copy */}
-                <p
+                {/* <p
                     className="es-reveal text-[#2D2D2D]/65 leading-relaxed mb-12"
                     style={{
                         fontFamily: "'Cormorant Garamond', serif",
@@ -116,7 +116,7 @@ export default function EditorialSpread({ images, quote, author, reverse = false
                     She moves through the world like light through stained glass —
                     painting everything she touches with colour, warmth, and an
                     effortless grace that takes your breath away.
-                </p>
+                </p> */}
 
                 {/* Thin rule */}
                 <div className="es-reveal h-px bg-[#C9A96E]/30 w-full" />

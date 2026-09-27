@@ -18,30 +18,30 @@ export default function App() {
 
       {/* ===== EDITORIAL SPREAD 1 ===== */}
       <SectionDivider
-        label="Issue 01 · Editorial"
-        title="Radiance"
-        subtitle="A woman of light, captured in time"
+        label="Issue 01 · A Love Letter"
+        title="My World"
+        subtitle="Every photograph, a page of the story I never want to end"
       />
 
       <EditorialSpread
         images={[rslImages[1], rslImages[2]]}
-        quote="She is the poem I never knew how to write, and this life with her — the greatest story ever told."
-        author="With Love"
+        quote="You are the only person who has ever made the world feel both bigger and smaller at the same time — bigger because of the life we are building, smaller because wherever you are, that is home."
+        author="Your Husband, Always"
         reverse={false}
       />
 
       {/* ===== PHOTO STORY 1 ===== */}
       <PhotoStory
         image={rslImages[5]}
-        caption="Every glance, a universe. Every smile, a reason."
+        caption="She moves through the world like light through stained glass — painting everything she touches with colour and warmth."
         issue="Vol. I · Portrait Series"
       />
 
       {/* ===== EDITORIAL SPREAD 2 ===== */}
       <EditorialSpread
         images={[rslImages[7], rslImages[8], rslImages[9]]}
-        quote="In her eyes, I found a home I never knew I was looking for."
-        author="Always & Forever"
+        quote="There are five thousand kilometres between Dhaka and Zürich — yet every morning I wake up and you are the very first thought that crosses my mind. Distance is just a number. You are the constant."
+        author="From Dhaka, With All My Love"
         reverse={true}
       />
 
@@ -57,7 +57,7 @@ export default function App() {
       {/* ===== PHOTO STORY 2 ===== */}
       <PhotoStory
         image={rslImages[16]}
-        caption="The grace she carries — effortless, timeless, sublime."
+        caption="On this, your first birthday as my wife — I want the whole world to know how extraordinary you are."
         issue="Vol. I · Feature"
         imagePosition="object-[center_35%]"
       />
@@ -66,13 +66,13 @@ export default function App() {
       <SectionDivider
         label="Issue 01 · The Portrait"
         title="Luminous"
-        subtitle="Professional portraits by the lens of love"
+        subtitle="Timeless portraits of the woman who changed my entire life"
       />
 
       <EditorialSpread
         images={[rslImages[21], rslImages[22]]}
-        quote="Beauty is the illumination of your soul."
-        author="Sumiya · 2026"
+        quote="Every time I look at these photographs, I am reminded: I am the luckiest person alive. Not because of fate or chance — but because you chose me, and I will spend the rest of my life being worthy of that choice."
+        author="Eashen · September 2026"
         reverse={false}
       />
 
