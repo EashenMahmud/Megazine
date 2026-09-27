@@ -274,12 +274,12 @@ export default function MagazineGrid({ images, imagePositions = {}, imageHeights
                             // style={{ padding: '4rem 1.5rem', marginBottom: '5rem' }}
                             >
                                 {/* horizontal rule */}
-                                <div className="flex items-center justify-center gap-4 mb-8">
+                                {/* <div className="flex items-center justify-center gap-4 mb-8">
                                     <div className="h-px bg-[#C9A96E]/40 w-20" />
                                     <span className="text-[#C9A96E] text-xs">◆</span>
                                     <div className="h-px bg-[#C9A96E]/40 w-20" />
-                                </div>
-                                <p
+                                </div> */}
+                                {/* <p
                                     style={{
                                         fontFamily: "'Playfair Display', serif",
                                         fontSize: 'clamp(1.4rem, 2.8vw, 2.4rem)',
@@ -293,7 +293,7 @@ export default function MagazineGrid({ images, imagePositions = {}, imageHeights
                                 >
                                     &ldquo;In every photograph, a universe of feeling —
                                     the warmth of her laughter, the poetry of her presence.&rdquo;
-                                </p>
+                                </p> */}
                                 <div className="flex items-center justify-center gap-4 mt-8">
                                     <div className="h-px bg-[#C9A96E]/40 w-20" />
                                     <span className="text-[#C9A96E] text-xs">◆</span>

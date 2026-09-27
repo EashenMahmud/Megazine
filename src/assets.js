@@ -9,7 +9,7 @@ export const rslImages = [
     'RSL07018.jpg', 'RSL07218.jpg', 'RSL07225.jpg', 'RSL07236.jpg',
     'RSL07361.jpg', 'RSL07389.jpg', 'RSL07392.jpg', 'RSL07395.jpg',
     'RSL07403.jpg', 'RSL07441.jpg', 'RSL07449.jpg', 'RSL07460.jpg',
-    'RSL07472.jpg', 'RSL07499.jpg',
+    'RSL07472.jpg', 'RSL07499.png',
 ];
 
 // Candid/personal photos (converted from HEIC)

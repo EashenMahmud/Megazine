@@ -102,6 +102,7 @@ export default function App() {
           // 'RSL07012.jpg': 'object-[center_20%]',
           'RSL07018.jpg': 'object-[center_30%]',
           'RSL07449.jpg': 'object-[center_30%]',
+          'RSL07499.png': 'object-[center_20%]',
 
           // Add any specific file you want adjusted here!
         }}
@@ -112,6 +113,7 @@ export default function App() {
           'RSL07002.jpg': '100vh',
           'RSL07018.jpg': '120vh',
           'RSL07449.jpg': '120vh',
+          'RSL07499.png': '120vh',
         }}
       />
 
